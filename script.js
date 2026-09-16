@@ -31,25 +31,29 @@ galleryImages.forEach(function(img) {
     });
 
 
-    // before / after slider
-    const baRange = document.querySelector("#baRange");
-    const baImgBefore = document.querySelector(".ba-img-before");
-    const baHandle = document.querySelector(".ba-handle");
+    // before / after sliders | loop so this works no matter how many .ba-slider blocks are on the page
+    const baSliders = document.querySelectorAll(".ba-slider");
 
-    // runs every time the range input changes, either by dragging or arrow keys
-    function updateBaSlider() {
-        const value = baRange.value; // a number from 0 to 100
+    baSliders.forEach(function(slider) {
+        const baRange = slider.querySelector(".ba-range");
+        const baImgBefore = slider.querySelector(".ba-img-before");
+        const baHandle = slider.querySelector(".ba-handle");
 
-        // clip-path: inset(top right bottom left) | we only ever change the right side,
-        // so a higher value means less of the right side is clipped away = more "before" shown
-        baImgBefore.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+        // runs every time this slider's range input changes, either by dragging or arrow keys
+        function updateBaSlider() {
+            const value = baRange.value; // a number from 0 to 100
 
-        // move the divider handle to line up with the clip edge
-        baHandle.style.left = value + "%";
-    }
+            // clip-path: inset(top right bottom left) | we only ever change the right side,
+            // so a higher value means less of the right side is clipped away = more "before" shown
+            baImgBefore.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
 
-    baRange.addEventListener("input", updateBaSlider);
-    updateBaSlider(); // set the starting position on page load
+            // move the divider handle to line up with the clip edge
+            baHandle.style.left = value + "%";
+        }
+
+        baRange.addEventListener("input", updateBaSlider);
+        updateBaSlider(); // set the starting position on page load
+    });
 
 
     // mobile nav
