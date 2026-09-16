@@ -18,8 +18,13 @@ section {
 
 
 body {
-  font-family: sans-serif;
+  font-family: "Nunito", sans-serif;
   line-height: 1.5;
+}
+
+h1, h2, h3,
+header span {
+  font-family: "Fredoka", sans-serif;
 }
 
 header {
