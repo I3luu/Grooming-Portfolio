@@ -31,6 +31,27 @@ galleryImages.forEach(function(img) {
     });
 
 
+    // before / after slider
+    const baRange = document.querySelector("#baRange");
+    const baImgBefore = document.querySelector(".ba-img-before");
+    const baHandle = document.querySelector(".ba-handle");
+
+    // runs every time the range input changes, either by dragging or arrow keys
+    function updateBaSlider() {
+        const value = baRange.value; // a number from 0 to 100
+
+        // clip-path: inset(top right bottom left) | we only ever change the right side,
+        // so a higher value means less of the right side is clipped away = more "before" shown
+        baImgBefore.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+
+        // move the divider handle to line up with the clip edge
+        baHandle.style.left = value + "%";
+    }
+
+    baRange.addEventListener("input", updateBaSlider);
+    updateBaSlider(); // set the starting position on page load
+
+
     // mobile nav
 
     const navToggle = document.querySelector(".nav-toggle");

@@ -139,6 +139,99 @@ header nav a:hover {
   font-size: 1rem;
 }
 
+#before-after {
+  background-color: #f7f0e6;
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+.ba-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: rgb(106, 64, 9);
+}
+.ba-header p {
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.ba-slider {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+.ba-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* only the "before" image gets clipped; the "after" image stays full-size underneath */
+.ba-img-before {
+  clip-path: inset(0 50% 0 0);
+}
+
+.ba-label {
+  position: absolute;
+  top: 1rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  pointer-events: none;
+}
+.ba-label-before {
+  left: 1rem;
+}
+.ba-label-after {
+  right: 1rem;
+}
+
+.ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background-color: white;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.ba-handle::before {
+  content: "\21c6"; /* left-right arrows */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background-color: white;
+  color: rgb(106, 64, 9);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.1rem;
+}
+
+/* the actual <input type="range"> is stretched over the whole slider and
+   made invisible; we only use it to track drag position and drive the JS */
+.ba-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 #specialties {
   background-color: #f7f0e6;
   padding: 4rem 1.5rem;
