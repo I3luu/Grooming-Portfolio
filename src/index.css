@@ -1,0 +1,31 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-cream: #fff6fa;
+  --color-blush: #ffe3ef;
+  --color-plum: #4b1840;
+  --color-berry: #8a3d78;
+  --color-hotpink: #ff3d9a;
+  --color-bubblegum: #ff8cc6;
+  --color-lavender: #b69cff;
+  --color-peach: #ffb38a;
+  --color-mint: #7fe3c4;
+  --color-butter: #ffe27a;
+  --font-sans: 'Nunito', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Fredoka', 'Nunito', ui-rounded, system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html, body { overflow-x: clip; }
+body { -webkit-tap-highlight-color: transparent; }
+body { background: var(--color-cream); color: var(--color-plum); }
+::selection { background: var(--color-hotpink); color: #fff; }
+
+/* Phones: shorter fan-gallery stage so the deck isn't floating in empty space. */
+@media (max-width: 639px) {
+  .fan-gallery.fan-gallery { padding: 0; }
+  .fan-gallery .fan-gallery-stage { height: 230px; }
+}
+
+/* Nav menu items: match the site's type. */
+.soap-bubble-menu .soap-bubble-menu-item.soap-bubble-menu-item { font-family: var(--font-sans); font-weight: 700; color: var(--color-berry); }
